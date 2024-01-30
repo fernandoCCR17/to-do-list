@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --naranja: #ea580c;
+}
+
+
+@media (min-width: 1024px) {
+    .nota__iconos{
+        opacity: 0;
+        transition: all .3s ease;
+        max-height: 999px;
+    }
+}
+
+.nota{
+    position: relative;
+    left: 0;
+    transition: all 1.5s ease;
+}
+
+.nota:hover .nota__iconos{
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.nota__span{
+    border: 2px solid var(--naranja);
+    border-radius: 5px;
+}
+
+.nota__span::after{
+    content: "";
+    position: absolute;
+    border:  solid var(--naranja);
+    border-width: 0 0.30em 0.30em 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 0.50em;
+    height: 1em;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+.nota__title .nota__input:checked ~ .nota__span::after{
+    opacity: 1;
+}
+
+.nota__texto{
+    position: relative;
+}
+
+.nota__texto::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--naranja);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: width .3s ease;
+}
+
+.nota__title .nota__input:checked ~ .nota__texto::after{
+    width: 100%;
+}
+
+.animacion__modal{
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.animacion__modal.active{
+    opacity: 1;
+}
+
+.eliminar{
+    animation: moverYEsperar 1.5s ease forwards;
+}
+
+@keyframes moverYEsperar {
+    0% {
+        left: 0;
+    }
+    80% {
+        left: 120%; 
+        max-height: 999px;
+    }
+
+    99%{
+        left: 120%;
+        max-height: 0;
+    }
+    100% {
+        left: 120%;
+        max-height: 0;
+        display: none;
+    }
+}
