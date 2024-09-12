@@ -29,6 +29,8 @@ function FiltrosProvider({children}) {
                 arrOrdenado = ordenarAlfabeticamente(arrOrdenado, filtros.ordenar)
             }
             setNotasFiltradas(arrOrdenado)
+        }else{
+            setNotasFiltradas([]);
         }
     }, [notas, filtros])
     
